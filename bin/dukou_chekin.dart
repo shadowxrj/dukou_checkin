@@ -8,10 +8,6 @@ void main(List<String> arguments) async {
   var passwd = Platform.environment['PASSWD_KEY'];
   var serverKey = Platform.environment['SERVER_KEY'];
 
-  print(email);
-  print(passwd);
-  print(serverKey);
-
   if (email != null && passwd != null) {
     var token = await login(email, passwd);
     var message = await checkin(token);
