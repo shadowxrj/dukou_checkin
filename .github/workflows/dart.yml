@@ -22,8 +22,12 @@ jobs:
 
       - name: Set Dart
         uses: dart-lang/setup-dart@9a04e6d73cca37bd455e0608d7e5092f881fd603
-      
+
       - name: Dukou checkin
+        env:
+          EMAIL_KEY: ${{ secrets.EMAIL_KEY }}
+          PASSWD_KEY: ${{ secrets.PASSWD_KEY }}
+          SERVER_KEY: ${{ secrets.SERVER_KEY }}
         run: |
-             dart pub get
-             dart bin/dukou_chekin.dart
+          dart pub get
+          dart bin/dukou_chekin.dart
