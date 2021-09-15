@@ -3,23 +3,27 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Dart
+name: dukou_checkin
 
 on:
   push:
+    branches:
+      - main
   schedule:
     - cron: '0 12 * * *'
 
 jobs:
-  build:
+  dukou_checkin:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout
       - uses: actions/checkout@v2
 
+      - name: Set Dart
       - uses: dart-lang/setup-dart@9a04e6d73cca37bd455e0608d7e5092f881fd603
       
-      - name: Run
+      - name: Dukou checkin
         run: |
              dart pub get
              dart bin/dukou_chekin.dart
