@@ -1,6 +1,28 @@
-A simple command-line application.
+# 渡口每日签到
 
-Created from templates made available by Stagehand under a BSD-style
-[license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
-"# dukou_checkin"  git init git add README.md git commit -m "first commit" git branch -M main git remote add origin https://github.com/lycstar/dukou_checkin.git git push -u origin main
-"# dukou_checkin" 
+## 使用
+
+使用 github action 每日定时功能
+
+1. Fork 本项目
+
+2. 添加 Secrets
+
+   方法：Settings -> Secrets -> New repository secret
+
+    - EMAIL_KEY (邮箱,必填)
+    - PASSWD_KEY (密码,必填)
+    - SERVER_KEY ([server 酱](https://sct.ftqq.com/sendkey) key，用于将脚本结果发送 server 酱通知；选填)
+
+3. 修改 .github/workflows 定时策略 cron
+
+   参考 github action 文档 [CRON](https://docs.github.com/cn/actions/reference/events-that-trigger-workflows#scheduled-events)
+
+    ```yml
+    schedule:
+        - cron: '0 12 * * *'
+    ```
+
+## 免责
+
+本代码仅用于学习，下载后请勿用于商业用途，并且使用该脚本发生的一切后果与本人无关
