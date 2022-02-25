@@ -60,7 +60,7 @@ Future<CheckinResult> checkin(String token) async {
     },
   )).get('https://dukouapi.com/api/user/checkin');
   print(response.data);
-  return CheckinResult.fromJson(response.data);
+  return CheckinResult.fromJson(json.decode(response.data));
 }
 
 Future<String> trafficTransform(CheckinResult result) async {
