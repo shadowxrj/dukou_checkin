@@ -26,7 +26,7 @@ void main(List<String> arguments) async {
     var result = await checkin(token);
     var message = "";
     if (result.ret == 1) {
-      String transformNum = await trafficTransform(result);
+      String transformNum = await trafficTransform(result, token);
       if (transformNum.isNotEmpty) {
         message = '签到获得流量${transformNum}MB，转换流量成功';
       } else {
@@ -63,12 +63,16 @@ Future<CheckinResult> checkin(String token) async {
   return CheckinResult.fromJson(json.decode(response.data));
 }
 
-Future<String> trafficTransform(CheckinResult result) async {
+Future<String> trafficTransform(CheckinResult result, String token) async {
   RegExp regExp = RegExp(r"\d+");
   var match = regExp.firstMatch(result.result);
   var num = match?.group(0);
   if (num != null && num.isNotEmpty) {
-    var response = await Dio().get(
+    var response = await Dio(BaseOptions(
+      headers: {
+        'access-token': token,
+      },
+    )).get(
       'https://dukou.dev/api/user/koukanntraffic',
       queryParameters: {'traffic': num},
     );
