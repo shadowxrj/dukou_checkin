@@ -34,7 +34,10 @@ void main(List<String> arguments) async {
   var passwd = Platform.environment['PASSWD_KEY'];
   var serverKey = Platform.environment['SERVER_KEY'];
 
-  if (email != null && passwd != null) {
+  if (email != null &&
+      passwd != null &&
+      email.isNotEmpty &&
+      passwd.isNotEmpty) {
     var token = await login(email, passwd);
     var checkinResult = await checkin(token);
     var message = checkinResult.result;
@@ -42,7 +45,7 @@ void main(List<String> arguments) async {
       TransformResult transformResult = await trafficTransform(10000, token);
       message += '\n${transformResult.msg}';
     }
-    if (serverKey != null) {
+    if (serverKey != null && serverKey.isNotEmpty) {
       await sendCheckinMessage(serverKey, message);
     }
   }
