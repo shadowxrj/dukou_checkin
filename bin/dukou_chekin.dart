@@ -42,7 +42,7 @@ void main(List<String> arguments) async {
     var checkinResult = await checkin(token);
     var message = checkinResult.result;
     if (checkinResult.ret == 1) {
-      TransformResult transformResult = await trafficTransform(1024, token);
+      TransformResult transformResult = await trafficTransform(100, token);
       message += '\n${transformResult.msg}';
     }
     if (serverKey != null && serverKey.isNotEmpty) {
