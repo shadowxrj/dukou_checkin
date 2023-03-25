@@ -10,7 +10,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '50 21 * * *'
+    - cron: '50 11 * * *'
 
 jobs:
   dukou_checkin:
