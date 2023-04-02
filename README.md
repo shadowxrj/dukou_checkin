@@ -13,6 +13,7 @@
     - EMAIL_KEY (邮箱,必填)
     - PASSWD_KEY (密码,必填)
     - SERVER_KEY ([server 酱](https://sct.ftqq.com/sendkey) key，用于将脚本结果发送 server 酱通知；选填)
+    - TRAFFIC_NUM (签到成功后兑换流量,大于0才执行;选填)
 
 3. 修改 .github/workflows 定时策略 cron
 
