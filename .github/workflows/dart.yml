@@ -28,6 +28,7 @@ jobs:
           EMAIL_KEY: ${{ secrets.EMAIL_KEY }}
           PASSWD_KEY: ${{ secrets.PASSWD_KEY }}
           SERVER_KEY: ${{ secrets.SERVER_KEY }}
+          TRAFFIC_NUM: ${{ secrets.TRAFFIC_NUM }}
         run: |
           dart pub get
           dart bin/dukou_chekin.dart
