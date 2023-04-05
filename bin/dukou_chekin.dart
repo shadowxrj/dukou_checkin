@@ -66,7 +66,7 @@ int getEnvVarAsInt(String envVarName) {
 
 Future<String> login(String email, String passwd) async {
   var response = await Dio().post(
-    'https://dukouapi.com/api/token',
+    'https://dukou.dev/api/token',
     data: {
       'email': email,
       'passwd': passwd,
@@ -81,7 +81,7 @@ Future<CheckinResult> checkin(String token) async {
     headers: {
       'access-token': token,
     },
-  )).get('https://dukouapi.com/api/user/checkin');
+  )).get('https://dukou.dev/api/user/checkin');
   print(response.data);
   return CheckinResult.fromJson(json.decode(response.data));
 }
