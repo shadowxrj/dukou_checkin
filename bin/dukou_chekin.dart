@@ -66,7 +66,7 @@ int getEnvVarAsInt(String envVarName) {
 
 Future<String> login(String email, String passwd) async {
   var response = await Dio().post(
-    'https://dukou.dev/api/token',
+    'https://flzt.top/api/token',
     data: {
       'email': email,
       'passwd': passwd,
@@ -81,14 +81,14 @@ Future<CheckinResult> checkin(String token) async {
     headers: {
       'access-token': token,
     },
-  )).get('https://dukou.dev/api/user/checkin');
+  )).get('https://flzt.top/api/user/checkin');
   print(response.data);
   return CheckinResult.fromJson(json.decode(response.data));
 }
 
 Future<TransformResult> trafficTransform(int num, String token) async {
   var response = await Dio(BaseOptions(headers: {'access-token': token})).get(
-    'https://dukou.dev/api/user/koukanntraffic',
+    'https://flzt.top/api/user/koukanntraffic',
     queryParameters: {'traffic': num},
   );
   print(response.data);
